@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado do Classificador</title>
+    <link rel="stylesheet" href="../static/css/result.css">
 </head>
 <body>
     <h2>Resultado para {{ classifier_name }}</h2>
-    <p>Accuracy: {{ accuracy }}</p>
-    <p>Precision: {{ precision }}</p>
-    <p>Recall: {{ recall }}</p>
-    <p>F1-Score: {{ f1 }}</p>
+    <p>Accuracy: {{ accuracy | round(3)}}</p>
+    <p>Precision: {{ precision | round(3)}}</p>
+    <p>Recall: {{ recall | round(3)}}</p>
+    <p>F1-Score: {{ f1 | round(3)}}</p>
 
     <h3>Matriz de Confusão</h3>
     <img src="data:image/png;base64,{{ confusion_matrix_plot }}" alt="Confusion Matrix">
