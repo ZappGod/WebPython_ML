@@ -9,9 +9,6 @@
 <body>
     <h1>Gerador de Matriz de Confusão</h1>
     <form action="/result" method="post">
-        <label for="random_state">Random State:</label>
-        <input type="number" name="random_state" required>
-        <br>
         <label for="classifier_name">Nome do Classificador:</label>
         <select name="classifier_name" required>
             <option value="KNN">KNN</option>
@@ -20,6 +17,9 @@
             <option value="DT">DT</option>
             <option value="RF">RF</option>
         </select>
+        <br>
+        <label for="random_state">Random State:</label>
+        <input type="number" name="random_state" required>
         <br>
         <input type="submit" value="Submit">
     </form>

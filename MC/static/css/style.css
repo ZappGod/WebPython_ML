@@ -24,11 +24,19 @@ label{
     margin-bottom: 8px;
 }
 
-input[type="number"],
 select,
 input[type="submit"]{
     margin: 0 auto;
     width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="number"]{
+    margin: 0 auto;
+    width: 98.1%;
     padding: 8px;
     margin-bottom: 15px;
     border-radius: 5px;
