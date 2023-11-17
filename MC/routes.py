@@ -31,11 +31,7 @@ def result():
         "RF": (RandomForestClassifier, get_parameters("RF")),
     }
 
-    if classifier_name not in classifiers:
-        return "Classificador desconhecido"
-
     class_names = np.unique(y).astype(str)
-    classifier_index = list(classifiers.keys()).index(classifier_name)
     accuracy, precision, recall, f1, confusion_matrix = train_and_test(
         get_classifier(classifier_name), classifiers[classifier_name][1], X_train, y_train, X_test, y_test
     )

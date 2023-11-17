@@ -11,6 +11,7 @@
     <form action="/result" method="post">
         <label for="classifier_name">Nome do Classificador:</label>
         <select name="classifier_name" required>
+            <option value="" disabled selected>Selecione um classificador</option>
             <option value="KNN">KNN</option>
             <option value="SVM">SVM</option>
             <option value="MLP">MLP</option>

@@ -21,8 +21,6 @@ def get_classifier(classifier_name):
         return DecisionTreeClassifier()
     elif classifier_name == "RF":
         return RandomForestClassifier()
-    else:
-        raise ValueError("Classificador desconhecido")
 
 def get_parameters(classifier_name):
     if classifier_name == "KNN":
@@ -35,8 +33,6 @@ def get_parameters(classifier_name):
         return {"criterion": ["gini", "entropy"], "max_depth": [3, 5, 10]}
     elif classifier_name == "RF":
         return {"n_estimators": [10, 20, 50], "max_depth": [3, 5, 10]}
-    else:
-        raise ValueError("Classificador desconhecido")
 
 def train_and_test(classifier, parameters, X_train, y_train, X_test, y_test):
     classifier.fit(X_train, y_train)
