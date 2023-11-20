@@ -10,7 +10,7 @@
     <h1>Gerador de Matriz de Confusão</h1>
     <form action="/result" method="post">
         <label for="classifier_name">Nome do Classificador:</label>
-        <select name="classifier_name" required>
+        <select name="classifier_name" id="classifier_select" required>
             <option value="" disabled selected>Selecione um classificador</option>
             <option value="KNN">KNN</option>
             <option value="SVM">SVM</option>
@@ -22,7 +22,55 @@
         <label for="random_state">Random State:</label>
         <input type="number" name="random_state" required>
         <br>
+        <div id="param_fields" style="display: none;">
+            <label for="p1"><span id="param1_label"></span></label>
+            <input type="number" name="p1" id="p1_input">
+            <br>
+            <label for="p2"><span id="param2_label"></span></label>
+            <input type="number" name="p2" id="p2_input">
+            <br>
+        </div>
         <input type="submit" value="Submit">
     </form>
+
+    <script>
+        document.getElementById('classifier_select').addEventListener('change', function() {
+            var classifier = this.value;
+            var paramFields = document.getElementById('param_fields');
+            var param1Label = document.getElementById('param1_label');
+            var param2Label = document.getElementById('param2_label');
+            var p1Input = document.getElementById('p1_input');
+            var p2Input = document.getElementById('p2_input');
+
+            if (classifier === 'KNN') {
+                param1Label.textContent = 'Neighbors';
+                param2Label.textContent = '';
+                p2Input.style.display = 'none';
+                paramFields.style.display = 'block';
+            } else if (classifier === 'SVM') {
+                param1Label.textContent = 'C';
+                param2Label.textContent = '';
+                p2Input.style.display = 'none';
+                paramFields.style.display = 'block';
+            } else if (classifier === 'MLP') {
+                param1Label.textContent = 'Layer Sizes';
+                param2Label.textContent = '';
+                p2Input.style.display = 'none';
+                paramFields.style.display = 'block';
+            } else if (classifier === 'DT') {
+                param1Label.textContent = 'Max Depth';
+                param2Label.textContent = 'Min Samples';
+                p2Input.style.display = 'block';
+                paramFields.style.display = 'block';
+            } else if (classifier === 'RF') {
+                param1Label.textContent = 'Estimators';
+                param2Label.textContent = 'Max Depth';
+                p2Input.style.display = 'block';
+                paramFields.style.display = 'block';
+            } else {
+                paramFields.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

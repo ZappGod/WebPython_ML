@@ -22,17 +22,17 @@ def get_classifier(classifier_name):
     elif classifier_name == "RF":
         return RandomForestClassifier()
 
-def get_parameters(classifier_name):
+def get_parameters(classifier_name,p1,p2 = None):
     if classifier_name == "KNN":
-        return {"n_neighbors": [3, 5, 7]}
+        return {"n_neighbors": p1}
     elif classifier_name == "SVM":
-        return {"kernel": ["linear", "poly", "rbf"], "C": [0.1, 1, 10]}
+        return {"C": p1}
     elif classifier_name == "MLP":
-        return {"hidden_layer_sizes": [(10,), (20,), (50,)], "activation": ["relu", "sigmoid", "tanh"]}
+        return {"hidden_layer_sizes": p1}
     elif classifier_name == "DT":
-        return {"criterion": ["gini", "entropy"], "max_depth": [3, 5, 10]}
+        return {"max_depth": p1,"min_samples_split": p2}
     elif classifier_name == "RF":
-        return {"n_estimators": [10, 20, 50], "max_depth": [3, 5, 10]}
+        return {"n_estimators": p1, "max_depth": p2}
 
 def train_and_test(classifier, parameters, X_train, y_train, X_test, y_test):
     classifier.fit(X_train, y_train)

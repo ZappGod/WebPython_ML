@@ -19,16 +19,18 @@ def index():
 def result():
     random_state = int(request.form.get("random_state"))
     classifier_name = request.form.get("classifier_name")
+    p1 = int(request.form.get("p1")) if "p1" in request.form else None
+    p2 = int(request.form.get("p2")) if ("p2" in request.form and request.form.get("p2").strip()) else None
 
     X, y = load_iris(return_X_y=True)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=random_state)
 
     classifiers = {
-        "KNN": (KNeighborsClassifier, get_parameters("KNN")),
-        "SVM": (SVC, get_parameters("SVM")),
-        "MLP": (MLPClassifier, get_parameters("MLP")),
-        "DT": (DecisionTreeClassifier, get_parameters("DT")),
-        "RF": (RandomForestClassifier, get_parameters("RF")),
+        "KNN": (KNeighborsClassifier, get_parameters("KNN", p1)),
+        "SVM": (SVC, get_parameters("SVM", p1)),
+        "MLP": (MLPClassifier, get_parameters("MLP", p1)),
+        "DT": (DecisionTreeClassifier, get_parameters("DT", p1, p2)),
+        "RF": (RandomForestClassifier, get_parameters("RF", p1, p2)),
     }
 
     class_names = np.unique(y).astype(str)
