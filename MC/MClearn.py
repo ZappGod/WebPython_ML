@@ -53,7 +53,7 @@ def plot_confusion_matrix(confusion_matrix, class_names):
 
     fig.clf()
 
-    plt.imshow(confusion_matrix)
+    plt.imshow(confusion_matrix,cmap='viridis')
     plt.xlabel("Classe real")
     plt.ylabel("Classe predita")
     plt.title("Matriz de confusão")
